@@ -1,0 +1,568 @@
+/**
+ * demo.css
+ * https://coidea.website
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ * Copyright 2018, COIDEA
+ * https://coidea.website
+ */
+
+ @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Josefin+Sans");
+html,
+body {
+  background-color: #25303C;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  overflow: hidden !important;
+}
+svg.icon{
+  width:1.5em;
+  height:1.5em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+.logo{
+  position: absolute;
+  z-index: 999;
+  top: 1.5em;
+  left: 4.5em;
+  height: 1.5em;
+}
+.btn {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #fff;
+}
+
+.btns {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #282828;
+}
+
+.submit {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: red !important;
+}
+
+
+.btn:focus {
+  outline: none;
+}
+
+.menu_nav{
+  margin: 2vh auto;
+  position: absolute;
+  right: 2vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.menu_nav div{
+  margin: auto .5em;
+}
+
+.menu_nav button{
+  cursor: pointer;
+}
+
+.menu_nav button a{
+  cursor: pointer;
+}
+.menu_nav button i:hover{
+  color: red;
+  transition: all .5s ease-in-out;
+}
+.btn--filter{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+.btn--search i{
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+.btn--popular{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.btn--chat{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.btn--pencil{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.btn--notification{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+.notification{
+  cursor: pointer;
+  z-index: 99;
+}
+.popular{
+  cursor: pointer;
+  z-index: 99;
+}
+.filter{
+  cursor: pointer;
+  z-index: 99;
+}
+.chat{
+  position: absolute;
+  z-index: 9999;
+  cursor: pointer;
+  bottom: 4vh;
+  left: 2vw;
+}
+.chat button{
+  font-size:1.5em;
+}
+
+.social{
+  position: absolute;
+  z-index: 99;
+  right: 29vw;
+  bottom: 4vh;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+.social p{
+  cursor: pointer !important;
+  color: #fff;
+  font-size: 1.4em;
+  transition: all .5s;
+  margin: 0 .8em 0;
+}
+.social p i {
+  transition: all .5s;
+}
+.social p i:hover{
+  color: #0b8bcc;
+  transition: all .5s;
+}
+.header{
+  left: 6em;
+  position: absolute;
+  bottom: 4vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 1.5em;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.basic-info{
+  position: absolute;
+  z-index: 999;
+  top: 4vh;
+  right: 41vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: #fff;
+}
+.basic-info span{
+  margin: 0 .7em;
+}
+.more{
+  position: absolute;
+  z-index: 9999;
+  right: 2vh;
+  bottom: 4vh;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+}
+.social-media {
+  border-left: 83vw solid #282828;
+  font-size: 1.5em;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: lighter;
+  color: #000;
+  text-align: right;
+  padding-top: 1em;
+  height: 100%;
+}
+.social-media span{
+  cursor: pointer;
+  margin: 0 .5em 0;
+}
+
+.username{
+   font-size: 1.7vw; 
+   cursor:pointer !important;
+}
+
+.velo-slider__hint > span {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.velo-slider__hint {
+  z-index: 99;
+  position: fixed;
+  top: 0em;
+  display: none;
+  height: 100vh;
+  width: 3vw;
+  font-size: 0.9em;
+  color: #fff;
+}
+@media (min-width: 54em) {
+  .velo-slider__hint {
+    display: block;
+  }
+}
+.velo-slider__hint > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+          transform: translate(-50%, -50%) rotate(-90deg);
+  overflow: hidden;
+}
+.velo-slider__hint > span > span {
+  display: inline-block;
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
+}
+.velo-slider__hint > span > span {
+  opacity: 1;
+  top: 50%;
+  transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  transition: 0.4 ease;
+}
+.carousel {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+}
+.carousel .slider {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.carousel .slider-for {
+  position: absolute;
+  display: block;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.carousel .slider-for .slick-list {
+  position: relative;
+}
+.carousel .slider-for .slick-list .slick-track {
+  position: relative;
+}
+.carousel .slider-for .slick-list .slick-track .slick-slide {
+  position: relative;
+}
+.carousel .slider-for .slick-list .slick-track .slick-slide div {
+  position: relative;
+  display: block;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+}
+.carousel .slider-for .slick-list .slick-track .slick-slide div .item {
+  position: absolute;
+  display: block;
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: absolute;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  filter: grayscale(100%);
+  /* Current draft standard */
+  -webkit-filter: grayscale(100%);
+  /* New WebKit */
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  /* Not yet supported in Gecko, Opera or IE */
+  filter: url(resources.svg#desaturate);
+  /* Gecko */
+  filter: gray;
+  /* IE */
+  -webkit-filter: grayscale(1);
+  /* Old WebKit */
+  opacity: 0.15;
+}
+.carousel .slider-nav {
+  position: relative;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.carousel .slider-nav .slick-list {
+  position: relative;
+}
+.carousel .slider-nav .slick-list .slick-track {
+  position: relative;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide {
+  position: relative;
+  outline: 0px none;
+  outline: 0px;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div {
+  position: relative;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item {
+  position: relative;
+  display: block;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content {
+  position: relative;
+  display: block;
+  height: 75%;
+  height: 75vh;
+  margin: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: absolute;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.14);
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:before {
+  content: "";
+  display: block;
+  background: linear-gradient(180deg, rgba(86, 97, 107, 0) 0%, rgba(32, 51, 69, 0.85) 100%);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.5));
+  color: #ffffff;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:before, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:after {
+  vertical-align: middle;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:before, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:after {
+  display: inline-block;
+  content: "";
+  height: 0.133em;
+  margin-top: -0.2em;
+  background: white;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:before {
+  width: 0;
+  margin-left: 0;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:after {
+  width: 3em;
+  margin-left: 1em;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .body {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  right: 2em;
+  color: #ffffff;
+}
+/*
+font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Slabo 27px', serif;
+font-family: 'Text Me One', sans-serif;
+*/
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .location,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .headline {
+  position: relative;
+  bottom: 0;
+  cursor: default;
+  color: #ffffff;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:before,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:before,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .number:after,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .location,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .headline,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .link {
+  transition: 375ms ease-in-out;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .location {
+  font-weight: 100;
+  margin-bottom: 1.5em;
+  transition-delay: 60ms;
+}
+@media screen and (max-width: 992px) {
+  .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .location {
+    font-size: 0.8em;
+  }
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .headline {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 2.467em;
+  transition-delay: 50ms;
+  color: #ffffff;
+  letter-spacing: -2px;
+}
+@media screen and (max-width: 992px) {
+  .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .headline {
+    font-size: 1.8em;
+  }
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .link {
+  display: inline-block;
+  background: #3498db;
+  color: #ffffff;
+  padding: 0.7em 1.25em 0.5em 1.25em;
+  font-size: 1.33em;
+  opacity: 0;
+  position: absolute;
+  bottom: -2em;
+  pointer-events: none;
+  transition-delay: 25ms;
+}
+@media screen and (max-width: 992px) {
+  .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content .link {
+    font-size: 0.8em;
+  }
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover:before, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover:before, .carousel .slider-nav .slick-list .slick-track .slick-slide.slick-current div .nav-item .content:before {
+  opacity: 1;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover:before,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .number:before,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .number:after,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .location,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .headline,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .link, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover:before,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .number:before,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .number:after,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .location,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .headline,
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .link {
+  transition: 500ms ease-in-out;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .number:before, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .number:before, .carousel .slider-nav .slick-list .slick-track .slick-slide.slick-current div .nav-item .content .number:before {
+  width: 3em;
+  margin-right: 1em;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .number:after, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .number:after, .carousel .slider-nav .slick-list .slick-track .slick-slide.slick-current div .nav-item .content .number:after {
+  width: 0;
+  margin-right: 0;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .location, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .location, .carousel .slider-nav .slick-list .slick-track .slick-slide.slick-current div .nav-item .content .location {
+  transition-delay: 0;
+  bottom: 4em;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .headline, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .headline, .carousel .slider-nav .slick-list .slick-track .slick-slide.slick-current div .nav-item .content .headline {
+  transition-delay: 100ms;
+  bottom: 1.5em;
+}
+.carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content.hover .link, .carousel .slider-nav .slick-list .slick-track .slick-slide div .nav-item .content:hover .link, .carousel .slider-nav .slick-list .slick-track .slick-slide.slick-current div .nav-item .content .link {
+  bottom: 0;
+  opacity: 1;
+  transition-delay: 250ms;
+  pointer-events: auto;
+}
+.carousel .navigation {
+  position: absolute;
+  display: block;
+  width: 56px;
+  height: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  z-index: 100;
+}
+@media screen and (max-width: 992px) {
+  .carousel .navigation {
+    right: 0;
+  }
+}
+.carousel .navigation .back,
+.carousel .navigation .forward {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #3498db;
+  color: #ffffff;
+  width: 56px;
+  height: 48px;
+  border: none;
+  font-size: 1em;
+  margin: 1px 0;
+  cursor: pointer;
+  outline: 0px none;
+  outline: 0px;
+}
+.carousel .navigation .back.slick-disabled,
+.carousel .navigation .forward.slick-disabled {
+  pointer-events: none;
+  background-color: #25303C;
+}
+
+.create-board{
+  width: 100%;
+  padding: 1em;
+  position: absolute;
+  z-index: 99999999;
+  cursor: pointer;
+  left: 0;
+  bottom: 0;
+  background-color: #47a3da;
+  color: #fff;
+  border: none;
+}
+

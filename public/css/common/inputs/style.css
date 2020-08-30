@@ -1,0 +1,138 @@
+h1{
+    color: #9b9c9e;
+}
+.form-control:focus {
+    border-color: transparent;
+    box-shadow: none !important;
+}
+
+input.clean-slide {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    border-radius: unset;
+}
+
+input.btn.submit {
+    border: none;
+    background: transparent;
+    font-family: 'Open Sans Condensed', sans-serif !important;
+    font-size: 1.2em;
+    color: red;
+}
+
+div#hidden_fields {
+    padding: 2em;
+}
+
+textarea.form-control:focus {
+    border-color: transparent;
+    outline: none;
+    border-bottom: 1px solid;
+}
+
+textarea.feedback{
+  border: none;
+  font-weight: 300;
+  font-size: 2em;
+}
+
+textarea.feedback:focus {
+  border: none;
+}
+
+
+form{
+  margin-top: -.3em !important;
+}
+
+select {
+    width: 100%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: unset;
+    background: transparent;
+}
+
+select:focus {
+  border-color: transparent;
+  outline: none;
+   border-bottom: 1px solid;
+}
+
+#editor1 {
+  height: 200px;
+}
+
+form {
+    margin-top: 5em;
+}
+input.clean-slide:focus {
+    outline:none !important;
+}
+input.form-control {
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: unset;
+}
+.ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+    height: 100px;
+}
+textarea.form-control {
+    height: 100px;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-radius: unset;
+    border-top: none;
+    background: transparent;
+}
+.velo-slider_hints > span {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.velo-slider_hints {
+  z-index: 999;
+  position: fixed;
+  top: 0em;
+  left: 5px;
+  display: none;
+  height: 100vh;
+  width: 7vw;
+  font-size: 3em;
+  color: #446d97;
+}
+@media (min-width: 54em) {
+  .velo-slider_hints {
+    display: block;
+  }
+}
+.velo-slider_hints > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+          transform: translate(-50%, -50%) rotate(-90deg);
+  overflow: hidden;
+}
+.velo-slider_hints > span > span {
+  display: inline-block;
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
+}
+.velo-slider_hints > span > span {
+  opacity: 1;
+  top: 50%;
+  transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  transition: 0.4 ease;
+}

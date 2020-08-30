@@ -1,0 +1,443 @@
+/***********************
+ *	Variables
+ **********************/
+/***********************
+ *	Project Main Styles
+ **********************/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+   font-family: 'Open Sans Condensed', sans-serif !important;
+  background-color: #282828;
+}
+
+.submit{
+  background: transparent;
+  color: #b1b1b1;
+  border: none;
+  cursor: pointer;
+  font-family: 'Text Me One', sans-serif;
+  font-weight: 900;
+  margin-left: 1em;
+  font-size: 1.2em;
+  transition: all .6s ease-in-out;
+}
+
+.submit:hover{
+  color: red;
+  transition: all .6s ease-in-out;
+}
+
+.submit:focus{
+  outline: none;
+}
+
+.social-media {
+  border-left: 83vw solid #282828;
+  font-size: 1.5em;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: lighter;
+  color: #000;
+  text-align: right;
+  padding-top: 1em;
+  height: 100%;
+}
+.social-media span{
+  cursor: pointer;
+  margin: 0 .5em 0;
+}
+
+ol, ul {
+    list-style: circle !important;
+}
+
+button.btn.btn-primary {
+  background: transparent;
+  color: #b1b1b1;
+  border: none;
+  cursor: pointer;
+  font-family: 'Text Me One', sans-serif;
+  font-weight: 900;
+  margin-left: 1em;
+  font-size: 1.2em;
+  transition: all .6s ease-in-out;
+}
+
+.modal-body {
+    position: relative;
+    padding: 15px;
+    font-size: 1.5em;
+}
+
+button.btn.btn-primary:focus{
+  outline: none;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+}
+
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+
+}
+
+.playlist{
+  position: absolute;
+  z-index: 99;
+  right: 1vw;
+  bottom: 9vh;
+  margin: 1em auto;
+  border-left: 120px solid #fff;
+  padding: .7em;
+  padding-left: 1em;
+  line-height: 12px;
+  font-size: .8em !important;
+  color: #fff;
+  cursor: pointer !important;
+  transition: all 5s;
+  font-family: 'Text Me One', sans-serif;
+  letter-spacing: .5em;
+  font-weight: 900;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.playlist a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.details{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  flex-wrap: wrap;
+  position: absolute;
+  z-index: 99;
+  right: 30vw;
+  bottom: 4vh;
+}
+
+.details p{
+  margin: 0 .5em;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 1em;
+}
+
+.bottom_nav{
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 2vh;
+  z-index: 999;
+  right: 1em;
+}
+.bottom_nav div {
+  margin: auto .7em;
+}
+
+.bottom_nav button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.bottom_nav div button i{
+  color: #fff;
+
+}
+
+.bottom_nav button:focus {
+  outline: none;
+}
+
+.bottom_nav button i:hover{
+  color: red;
+  transition: all .5s ease-in-out;
+}
+
+.btn--filter{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.btn--popular{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.btn--chat{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+.btn--search {
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+.btn--pencil{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.btn--notification{
+  transition: all .5s ease-in-out;
+  font-size: 1.5em;
+}
+
+.chat{
+  position: absolute;
+  bottom: 5em;
+  left: 5em;
+  cursor: pointer;
+  z-index: 999;
+}
+.chat button{
+  color: #fff;
+}
+
+.pencil{
+  position: absolute;
+  top: 0em;
+  left: 5em;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.btn--filter{
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+
+.btn--popular{
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+
+.btn--chat{
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+
+.btn--pencil{
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+
+.btn--notification{
+  transition: all .5s ease-in-out;
+  font-size: 1.3em;
+}
+
+.search-wrap svg:hover,
+.btn--popular:hover,
+.btn--filter:hover,
+.btn--notification:hover{
+  color: red;
+  transition: all .5s ease-in-out;
+}
+
+.social{
+  position: absolute;
+  z-index: 99;
+  right: 1vw;
+  bottom: 4vh;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+.social p{
+  cursor: pointer !important;
+  color: #fff;
+  font-size: 1.2em;
+  transition: all .5s;
+  margin: 0 .8em 0;
+}
+.social p i {
+  transition: all .5s;
+}
+.social p i:hover{
+  color: #0b8bcc;
+  transition: all .5s;
+}
+
+.create-board{
+  width: 100%;
+  padding: 1em;
+  position: absolute;
+  z-index: 99999999;
+  cursor: pointer;
+  left: 0;
+  bottom: 0;
+  background-color: #47a3da;
+  color: #fff;
+  border: none;
+}
+
+.slider-pages {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+.slider-page {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  -webkit-transition: -webkit-transform 1350ms;
+  transition: -webkit-transform 1350ms;
+  transition: transform 1350ms;
+  transition: transform 1350ms, -webkit-transform 1350ms;
+}
+
+.slider-page--skew {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 140%;
+  height: 100%;
+  background: #282828;
+  -webkit-transform: skewX(-18deg);
+          transform: skewX(-18deg);
+}
+
+.slider-page--left {
+  left: 0;
+  -webkit-transform: translateX(-32.5vh) translateY(100%) translateZ(0);
+          transform: translateX(-32.5vh) translateY(100%) translateZ(0);
+}
+.slider-page--left .slider-page--skew {
+  left: -40%;
+}
+.slider-page--left .slider-page__content {
+  padding: auto 30% auto 30%;
+  -webkit-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+}
+
+.slider-page--right {
+  left: 50%;
+  -webkit-transform: translateX(32.5vh) translateY(-100%) translateZ(0);
+          transform: translateX(32.5vh) translateY(-100%) translateZ(0);
+}
+.slider-page--right .slider-page--skew {
+  right: -40%;
+}
+.slider-page--right .slider-page__content {
+  padding: auto 30% auto 30%;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+}
+
+.slider-page__content {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 30% 0 30%;
+  color: #fff;
+  background-size: cover;
+  -webkit-transform: skewX(18deg);
+          transform: skewX(18deg);
+  -webkit-transition: -webkit-transform 1350ms;
+  transition: -webkit-transform 1350ms;
+  transition: transform 1350ms;
+  transition: transform 1350ms, -webkit-transform 1350ms;
+}
+
+.slider-page__title {
+  margin-bottom: .5em;
+  font-size: 1em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.slider-page__title--big {
+  font-size: 4em;
+}
+
+.slider-page__description {
+  font-size: 1em;
+  text-align: center;
+}
+
+.slider-page__link {
+  color: #80a1c1;
+}
+.slider-page__link:hover, .slider-page__link:focus {
+  color: #6386a9;
+  text-decoration: none;
+}
+
+/***********************
+ *	Project JS Styles
+ **********************/
+.js-scrolling__page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.js-scrolling--active .slider-page {
+  -webkit-transform: translateX(0) translateY(0) translateZ(0);
+          transform: translateX(0) translateY(0) translateZ(0);
+}
+
+.js-scrolling--inactive .slider-page__content {
+  -webkit-transform: skewX(18deg) scale(0.9);
+          transform: skewX(18deg) scale(0.9);
+}
+
+
+.js-scrolling__page-1 .slider-page--right .slider-page__content {
+  background-color: #282828;
+}
+
+.js-scrolling__page-2 .slider-page--left .slider-page__content {
+  background-color: #282828;
+}
+.js-scrolling__page-2 .slider-page--left .slider-page__title,
+.js-scrolling__page-2 .slider-page--left .slider-page__description {
+  color: #fff;
+}
+.js-scrolling__page-3 .slider-page--right .slider-page__content {
+  background-color: #282828;
+}
+

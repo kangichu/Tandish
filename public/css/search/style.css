@@ -1,0 +1,233 @@
+.intro-section {
+  text-align: center;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.content-section {
+  --scroll-length: 1.5;
+  height: calc( var(--scroll-length) * 100vh );
+  width: 100%;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+.content-section .content .subheading,
+.content-section .content .paragraph {
+  opacity: 1;
+  opacity: calc( 1 + var(--viewport-y) );
+}
+
+.figure {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.figure > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 2.3em;
+  width: 100%;
+  height: 100%;
+  max-width: 35em;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  color: white;
+  padding: 2em;
+  font-size: 2.5vmin;
+}
+.content * {
+  text-shadow: 0 0 4vmin rgba(0, 0, 0, 0.25);
+}
+.content > .header {
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.content > .paragraph {
+  grid-row: 2 / 3;
+  line-height: 1.5;
+}
+
+.heading {
+  font-size: 2.75em;
+  margin: 0;
+}
+
+.subheading {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: .5em;
+}
+
+/* ---------------------------------- */
+.figure {
+  --scale: calc(.8 +
+    (.2 * var(--scroll-length) * var(--visible-y))
+  );
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  will-change: transform;
+  -webkit-transform: scale(var(--scale));
+          transform: scale(var(--scale));
+}
+.figure:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: black;
+  opacity: calc( var(--visible-y) );
+}
+.figure > img {
+  display: block;
+  will-change: transform;
+  -webkit-transform: scale(calc(1 / var(--scale)));
+          transform: scale(calc(1 / var(--scale)));
+}
+
+/* ---------------------------------- */
+.char {
+  display: inline-block;
+  opacity: calc(  1 + (  ( var(--viewport-y) * 1.5 ) - var(--char-percent) ) );
+}
+
+*,
+*:before,
+*:after {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.heading,
+.intro-heading {
+  font-weight: 700;
+  color: #fff;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  background: #000;
+  margin: 0;
+  padding: 0;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -.015em;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+a.link_btn {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: .5em;
+  cursor: pointer;
+}
+
+.playlist{
+  border:1px solid #fff;
+  padding: .7em;
+  line-height: 12px;
+  font-size: .8em !important;
+  color: #fff;
+  cursor: pointer  !important;
+  transition: all 5s;
+  font-family: 'Text Me One', sans-serif;
+  letter-spacing: .9em;
+  font-weight: 500;
+  width: 60%;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.playlist a{
+  text-decoration: none;
+}
+
+
+.bottom_nav{
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 1em;
+  z-index: 999;
+  right: 1em;
+}
+
+.bottom_nav div{
+  margin: auto .2em;
+}
+
+.bottom_nav button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.bottom_nav button i {
+  color:  #fff ;
+}
+
+.bottom_nav button i:hover{
+  color: red;
+  transition: all .5s ease-in-out;
+}
+
+.bottom_nav button:focus {
+  outline: none;
+}
+
+.create_recipe{
+  position: fixed !important;
+}
+
+.bottom_nav {
+  position: fixed !important;
+}
+
+.bottom_nav .btn--popular,
+.bottom_nav .btn--notification{
+  font-size: 1.4em;
+}
+
+.logo{
+  position: fixed;
+  z-index: 999;
+  top: 1.5em;
+  left: 4.5em;
+  height: 1.5em;
+}
+
+
