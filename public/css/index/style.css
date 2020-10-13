@@ -56,7 +56,7 @@ body {
 }
 
 .back {
-  left: 1.7em;
+  left: 1.3em;
   position: absolute;
   z-index: 9999;
   top: 3em;
@@ -115,7 +115,7 @@ a {
   font-family: 'Text Me One', sans-serif;
   letter-spacing: .9em;
   font-weight: 500;
-  width: 60%;
+/*  width: 12.5em;*/
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -557,7 +557,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   overflow-y: hidden;
   padding: 6%;
-  margin-top: 5vh;
+  /*margin-top: 5vh;*/
   font-size: 1.2vh;
 }
 .velo-slide__pretitle {
@@ -575,9 +575,19 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   letter-spacing: -0.025em;
   font-weight: lighter;
-  font-size: .9em;
+  /*font-size: .9em;*/
 }
-@media (min-width: 54em) {
+.name{
+  cursor:pointer; 
+  margin-bottom:.3em; 
+  font-size: 1.8em;
+}
+
+.postTitle{
+  font-size: 3.5em;
+}
+
+/*@media (min-width: 54em) {
   .velo-slide__title {
     font-size: 2vw;
   }
@@ -591,13 +601,13 @@ h1, h2, h3, h4, h5, h6 {
   .velo-slide__title {
     font-size: 2vw;
   }
-}
+}*/
 .velo-slide__text {
   color: #fff;
   max-width: 30em;
   display: block;
   margin: 1em 0 1.5em 1%;
-  font-size: 1.2vw;
+  font-size: 16.392px;
   line-height: 1.8;
   font-weight: 300;
 }
@@ -964,4 +974,90 @@ h1, h2, h3, h4, h5, h6 {
 
 .icon-right-arrow:before {
   content: "\e907";
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  .velo-slide__header {
+    z-index: 9999;
+    position: relative;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    font-family: 'Roboto', sans-serif !important;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: hidden;
+    padding: 6%;
+    margin-top: 5vh;
+    font-size: 1.2vh;
+  }
+
+  .name{
+    cursor:pointer; 
+    margin-bottom:.3em; 
+    font-size: 2em !important;
+  }
+
+  .postTitle{
+    font-size: 3.5em !important;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
 }

@@ -13,7 +13,7 @@ Primary style
 .create_recipe{
   position: absolute;
   bottom: 4vh;
-  left: 2em;
+  left: 2.5vw;
   z-index: 999;
   font-size: 1.5em
 }

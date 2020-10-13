@@ -15,10 +15,25 @@
         <div class="tools">
           @if(!Auth::guest())
             @if(Auth::user()->id != $user->id)
-               <span title="Follow" class="btn btn-sub"><i class="las la-check"></i></span>
+              @if(auth()->user()->isFollowing($user))
+              {!! Form::open(['action' => 'ProfilesController@follwUserRequest', 'method' => 'POST',]) !!}
+                {{Form::hidden('user_id', $user->id)}}
+                <button type="submit" title="Unfollow"  class="btn btn-sub"><i style="color: blue" class="las la-check-double"></i></button>
+              {!! Form::close() !!}
+              @else
+              {!! Form::open(['action' => 'ProfilesController@follwUserRequest', 'method' => 'POST',]) !!}
+                {{Form::hidden('user_id', $user->id)}}
+                <button type="submit" title="Follow"  class="btn btn-sub"><i class="las la-check"></i></button>
+              {!! Form::close() !!}
+              @endif
             @endif
           @endif
-          <span title="Bookmarks" id="c-button--slide-left" class="c-button"><i class="las la-bookmark"></i></span>
+          @if(!Auth::guest())
+            @if(Auth::user()->id === $user->id)
+              <span title="Bookmarks"><a href="/bookmark/{{$user->id}}"><i class="las la-bookmark"></i></a></span>
+            @endif
+          @endif
+          
           <span title="Cookbooks" id="c-button--slide-right" class="c-button"><i class="las la-book-open"></i></span>
           @if(!Auth::guest())
             @if(Auth::user()->id != $user->id)
@@ -35,9 +50,6 @@
               <span title="My Recipes"><a href="/user/posts/{{$user->id}}"><i class="las la-expand"></i></a></span>
             @endif
           @endif
-
-
-          
         </div>
       </div>
       @if(count($posts) > 0)
@@ -52,38 +64,49 @@
           <span style="padding-left: .3em;">{{ $postCount }}</span>
         </div>
         <div class="subs" title="Cookbooks">
-          <span><a href="/cookbook">COOKBOOKS</a></span>
+          <span>COOKBOOKS</span>
           <span style="padding-left: .3em">{{ $cookbookCount }}</span>
         </div>
-        <div class="bookmarks" title="Bookmarks">
-          <span>BOOKMARKS</span>
-          <span style="padding-left: .3em">0</span>
-        </div>  
+        @if(!Auth::guest())
+          @if(Auth::user()->id === $user->id)
+            <div class="bookmarks" title="Bookmarks">
+              <span>BOOKMARKS</span>
+              <span style="padding-left: .3em">{{ $bookmarkcount }}</span>
+            </div>
+          @endif
+        @endif
+        <div class="bookmarks" title="subscribers">
+          <span>SUBSCRIBERS</span>
+          <span style="padding-left: .3em">{{ $user->followers()->get()->count() }}</span>
+        </div>
       </div> 
         
       <div id="hero-slides">
         <div id="header">
           <div id="logo"></div>
-          <div id="menu">
-            <i class="las la-play"></i>
-          </div>
+          <!-- @if(count($posts) >= 2)
+            <div id="menu">
+              <i class="las la-play"></i>
+            </div>
+          @endif -->
         </div>
         <div id="slides-cont">
-          @if(count($posts) >= 4)
+         <!--  @if(count($posts) >= 4)
           <div class="button" id="next"></div>
           <div class="button" id="prev"></div>
-          @endif
+          @endif -->
           <div id="slides">
-            @if(count($posts) >= 4)
+            @if(count($posts) >= 1)
               @foreach($posts as $post)
+              <a href="/r/{{$post->id}}">
                 <div class="slide" style="background-image: url(/storage/cover_images/{{$post->cover_image}});">
                   <div class="number">{{$post->updated_at->diffForHumans()}}</div>
                   <div class="body">
-                    <div class="location">Shibuya, Japan</div>
-                    <div class="headline">{{ $post->title }}</div><a href="/r/{{$post->id}}">
-                      <div class="link">Make This Dish</div></a>
+                    <!-- <div class="location">Shibuya, Japan</div> -->
+                    <div class="headline">{{ $post->title }}</div>
                   </div>
                 </div>
+              </a>
               @endforeach
             @endif
           </div>

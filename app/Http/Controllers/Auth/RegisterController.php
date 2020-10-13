@@ -53,7 +53,8 @@ class RegisterController extends Controller
         $messages = [
             'email.required' => 'We need to know your e-mail address!',
             'password.required' => 'How will you log in?',
-            'password.confirmed' => 'Passwords must match...'            
+            'password.confirmed' => 'Passwords must match...',
+            'password.min' => 'Password must have a minimum of 10 characters'          
         ];
 
         $rules = [
@@ -62,7 +63,7 @@ class RegisterController extends Controller
             'password' => [
                 'required', 
                 'string', 
-                'min:10', 
+                'min:5', 
                 'confirmed'
             ]
         ];

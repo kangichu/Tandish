@@ -9,6 +9,7 @@ use App\User;
 use App\Post;
 use App\Profile;
 use App\Cookbook;
+use App\Bookmark;
 
 class ProfilesController extends Controller
 {
@@ -58,10 +59,11 @@ class ProfilesController extends Controller
     {
         $user = User::find($id);
         $cookbooks = $user->cookbooks()->orderBy('created_at', 'desc')->get();
-        $posts = $user->posts()->orderBy('created_at', 'desc')->get();
+        $posts = $user->posts()->orderBy('created_at', 'desc')->take(2)->get();
         $postCount = $user->posts()->count();
         $cookbookCount = $user->cookbooks()->count();
-        return view('profile.profile')->with(array("user" => $user, "posts" => $posts, "postCount" => $postCount, 'cookbooks' => $cookbooks, 'cookbookCount' => $cookbookCount));
+        $bookmarkcount = $user->bookmarks()->count();
+        return view('profile.profile')->with(array("user" => $user, "posts" => $posts, "postCount" => $postCount, 'cookbooks' => $cookbooks, 'cookbookCount' => $cookbookCount, 'bookmarkcount'=>$bookmarkcount));
     }
 
     /**
@@ -92,19 +94,7 @@ class ProfilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'bio' => 'required',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'instagram' => 'required',
-            'pinterest' => 'required',
-            'youtube' => 'required',
-            'link' => 'required'
-        ]);
-
-        $user = User::find($id);
-        $profile = $user->profile()->get();
-        dd($profile);
+        //
     }
 
     /**
@@ -124,5 +114,16 @@ class ProfilesController extends Controller
         $posts = $user->posts()->orderBy('created_at', 'desc')->get();
         $postCount = $user->posts()->count();
         return view('recipes.recipes')->with(array("user" => $user, "posts" => $posts, "postCount" => $postCount));
+    }
+
+    public function follwUserRequest(Request $request){
+
+
+        $user = User::find($request->user_id);
+        $response = auth()->user()->toggleFollow($user);
+
+
+        /*return response()->json(['success'=>200]);*/
+        return back();
     }
 }

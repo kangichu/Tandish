@@ -104,7 +104,7 @@
       <script src="{{ asset('js/common/slide/menu.js') }}"></script>
       <script src="{{ asset('js/profile/slidein/main.js') }}"></script>
       <script src="{{ asset('js/profile/cookbook/script.js') }}"></script>
-      <script src="{{ asset('js/profile/index.js') }}"></script>
+      <!-- <script src="{{ asset('js/profile/index.js') }}"></script> -->
       <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
       <script>
@@ -142,7 +142,6 @@
           slideRight.open();
         });
       </script>
-
     </body>
 
 </html>

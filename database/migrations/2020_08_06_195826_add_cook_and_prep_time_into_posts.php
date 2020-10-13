@@ -14,8 +14,12 @@ class AddCookAndPrepTimeIntoPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('time');
-            $table->string('cook');
+            $table->integer('htime');
+            $table->integer('mtime');
+            $table->integer('stime');
+            $table->integer('hcook');
+            $table->integer('mcook');
+            $table->integer('scook');
         });
     }
 
@@ -27,8 +31,12 @@ class AddCookAndPrepTimeIntoPosts extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('time');
-            $table->dropColumn('cook');
+            $table->dropColumn('htime');
+            $table->dropColumn('mtime');
+            $table->dropColumn('stime');
+            $table->dropColumn('hcook');
+            $table->dropColumn('mcook');
+            $table->dropColumn('scook');
         });
     }
 }

@@ -38,7 +38,7 @@
 						</div>
 						@if(count($errors) > 0)
 							<br>
-							<span class="alert alert-warning alert-block ">Please Fill in all required fields before submitting</span>
+							<span class="alert alert-warning alert-block ">Please confirm everything is in order before posting</span>
 						@endif
 						<!-- /Top Navigation -->
 
@@ -46,7 +46,7 @@
 						<div class="py-10">	
 							<div x-show.transition.in="step === 1">
 								<div class="mb-5">
-									{{Form::text('title', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Recipe Title'])}}<br>
+									{{Form::text('title', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Recipe Title'])}}<br><br>
 				                    @if ($errors->has('title'))
 				                        <span class="alert alert-warning alert-block ">{{ $errors->first('title') }}</span><br><br>
 				                    @endif 
@@ -61,7 +61,7 @@
 								</div>
 
 								<div class="mb-5">
-									<img id="output" class='coverDisplay' src="/storage/cover_images/noimage.jpg" style="height:60vh; width: 100vw" />
+									<img id="output" class='coverDisplay' src="/storage/cover_images/noimage.jpg" style="height:auto; width: auto" />
 									{{Form::label('body', 'Recipe Cover Image ', ['class'=>'font-bold mb-1 text-gray-700 block'])}}
 									<small>High Quality Cover Image: 24MP Quality</small><br /><br />
 				                    <input type="file" name="cover_image" accept="image/*" 
@@ -72,13 +72,13 @@
 
 							<div x-show.transition.in="step === 2">
 								<div class="mb-5">
-				                    {{Form::textarea('ingredients', '', ['class' => 'form-control', 'placeholder' => 'Ingredients List', 'id'=>'ingredients'])}}<br><br>
+				                    {{Form::textarea('ingredients', '', ['class' => 'form-control', 'placeholder' => 'Ingredients List', 'id'=>'ingredients'])}}<br>
 				                    @if ($errors->has('ingredients'))
 				                        <span class="alert alert-warning alert-block ">{{ $errors->first('ingredients') }}</span><br><br>
 				                    @endif 
 								</div>
 								<div class="mb-5">
-									{{Form::textarea('method', '', ['placeholder' => 'Method', 'id'=>'method'])}}<br><br>
+									{{Form::textarea('method', '', ['placeholder' => 'Method', 'id'=>'method'])}}<br>
 				                    @if ($errors->has('method'))
 				                        <span class="alert alert-warning alert-block ">{{ $errors->first('method') }}</span><br><br>
 				                    @endif 
@@ -87,28 +87,73 @@
 							</div>
 
 							<div x-show.transition.in="step === 3">
-								<div class="mb-5">
-									{{Form::text('time', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Preparation time: 00Hrs 00Mins'])}}<br><br>
-				                     @if ($errors->has('time'))
-				                        <span class="alert alert-warning alert-block ">{{ $errors->first('time') }}</span><br>	<br>
-				                    @endif 
+								<label for="description" class="font-bold mb-1 text-gray-700 block">Preparation Time</label>
+								<div class="row">
+									<div class="col-4">
+										<div class="mb-5">
+											{{Form::number('htime', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 hr'])}}<br><br>
+						                     @if ($errors->has('time'))
+						                        <span class="alert alert-warning alert-block">{{ $errors->first('time') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="mb-5">
+											{{Form::number('mtime', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 min'])}}<br><br>
+						                     @if ($errors->has('time'))
+						                        <span class="alert alert-warning alert-block">{{ $errors->first('time') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="mb-5">
+											{{Form::number('stime', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 sec'])}}<br><br>
+						                     @if ($errors->has('time'))
+						                        <span class="alert alert-warning alert-block">{{ $errors->first('time') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>
 								</div>
 
-								<div class="mb-5">
-									 {{Form::text('cook', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Cook time: 00Hrs 00Mins'])}}<br><br>
-				                     @if ($errors->has('cook'))
-				                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
-				                    @endif 
+								<label for="description" class="font-bold mb-1 text-gray-700 block">Cooking Time</label>
+								<div class="row">
+									<div class="col-4">
+										<div class="mb-5">
+											 {{Form::number('hcook', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 hr'])}}<br><br>
+						                     @if ($errors->has('cook'))
+						                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>	
+									<div class="col-4">
+										<div class="mb-5">
+											 {{Form::number('mcook', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 min'])}}<br><br>
+						                     @if ($errors->has('cook'))
+						                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>	
+									<div class="col-4">
+										<div class="mb-5">
+											 {{Form::number('scook', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 sec'])}}<br><br>
+						                     @if ($errors->has('cook'))
+						                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>	
 								</div>
 
+								<label for="description" class="font-bold mb-1 text-gray-700 block">Serves how many people?</label>
 								<div class="mb-5">
-									{{Form::number('serves', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Number of people served'])}}<br><br>
+									{{Form::number('serves', '', ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 people'])}}<br><br>
 				                     @if ($errors->has('serves'))
 				                        <span class="alert alert-warning alert-block ">{{ $errors->first('serves') }}</span><br><br>
 				                    @endif 
 								</div>
+
 								<div class="mb-5">
-									<label for="description" class="font-bold mb-1 text-gray-700 block">Optional</label>
+									<label for="description" class="font-bold mb-1 text-gray-700 block">Optional (<small>Create cookbooks from your profile</small>)</label>
+									
 						            <select name="cookbook_id" id="cookbook_id" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
 						                <option value="">--- Select Cookbook ---</option>
 						                @foreach ($cookbooks as $cookbook)

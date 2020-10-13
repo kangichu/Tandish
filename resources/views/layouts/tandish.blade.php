@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSRF Token -->
@@ -13,7 +13,9 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Slabo+27px|Text+Me+One" rel="stylesheet">
         <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/tandish/style.css') }}">
+		<link rel='stylesheet prefetch' href="{{ asset('font/css/line-awesome.min.css') }}">
 		<style>
 		[x-cloak] {
 			display: none;
@@ -73,55 +75,104 @@
 			background-repeat: no-repeat;
 		}
 		.pro{
-			position: fixed;
+			position: absolute;
 			bottom: 1em;
 			right: 1em;
 		}
 	</style>
 	</head>
 	<body>
-	@include('inc.messages')
-	<!-- partial:index.partial.html -->
-	@yield('content')  
-	<!-- partial -->
-	<!-- <div class="pro">
-		<script type="text/javascript"> //<![CDATA[
-		  var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/");
-		  document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
-		//]]></script>
-		<script language="JavaScript" type="text/javascript">
-		  TrustLogo("https://www.positivessl.com/images/seals/positivessl_trust_seal_sm_124x32.png", "POSDV", "none");
-		</script>
-	</div> -->
-	
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src="{{ asset('js/tandish/script.js') }}"></script>
-	<script>
-		function app() {
-			return {
-				step: 1, 
-				passwordStrengthText: '',
-				togglePassword: false,
-				password: '',
-				gender: 'Male',
+		@include('inc.messages')
+		<!-- partial:index.partial.html -->
+		@yield('content')  
+		<!-- partial -->
+		<!-- <div class="pro">
+			<script type="text/javascript"> //<![CDATA[
+			  var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/");
+			  document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+			//]]></script>
+			<script language="JavaScript" type="text/javascript">
+			  TrustLogo("https://www.positivessl.com/images/seals/positivessl_trust_seal_sm_124x32.png", "POSDV", "none");
+			</script>
+		</div> -->
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+		<script src="{{ asset('js/tandish/script.js') }}"></script>
+		<script>
+			function app() {
+				return {
+					step: 1, 
+					passwordStrengthText: '',
+					togglePassword: false,
+					password: '',
+					gender: 'Male',
 
-				checkPasswordStrength() {
-					var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-					var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+					checkPasswordStrength() {
+						var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+						var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
-					let value = this.password;
+						let value = this.password;
 
-					if (strongRegex.test(value)) {
-						this.passwordStrengthText = "Strong password";
-					} else if(mediumRegex.test(value)) {
-						this.passwordStrengthText = "Could be stronger";
-					} else {
-						this.passwordStrengthText = "Too weak";
+						if (strongRegex.test(value)) {
+							this.passwordStrengthText = "Strong password";
+						} else if(mediumRegex.test(value)) {
+							this.passwordStrengthText = "Could be stronger";
+						} else {
+							this.passwordStrengthText = "Too weak";
+						}
 					}
 				}
 			}
-		}
-	</script>
+		</script>
+		<script>
+			$(document).ready(function() {
+				$('.radio').on('click', function (e) {
+				    if ($(e.target).is('.radioinput')) {
+				        e.stopPropagation();
+				    } else {
+				        if ($('input:radio', this).prop('checked') === true) {
+				            return false;
+				        }
+				        $('input:radio', this).prop('checked', true);
+				    }
+				});
+			});
+		</script>
+		<script>
+			$(document).ready(function(){
+			    $( document ).on( 'focus', ':input', function(){
+			        $( this ).attr( 'autocomplete', 'off' );
+			    });
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+				// radio element click event handler
+				var radioClickHandler = function() {
+				  var first = document.querySelector('.first');
+				  var second = document.querySelector('.second');
+
+				  // show/hide required elements depending on which radio element was clicked.
+				  if ($(this).data("id") == 1) {
+				    first.classList.remove('hidden');
+				    second.classList.add('hidden');
+				  } else {
+				    first.classList.add('hidden');
+				    second.classList.remove('hidden');
+				  }
+				}
+
+				// Get All Radio Elements
+				var radios = document.querySelectorAll('.radio');
+
+				// Apply click event
+				for (var i = 0; i < radios.length; i++) {
+				  radios[i].addEventListener('click', radioClickHandler);
+				}
+
+				// Apply Default
+				radioClickHandler.apply(radios[0]);
+			});
+		</script>
 	</body>
 </html>

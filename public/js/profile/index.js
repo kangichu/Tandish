@@ -8,7 +8,7 @@ let slideChildren = slides.children;
 let slideCount = slides.children.length;
 let currentlyDemoing = false;
 let currentPage = 0;
-let slidesPerPage = () => window.innerWidth > 1700 ? 4 : window.innerWidth > 1200 ? 3 : 2;
+let slidesPerPage = () => window.innerWidth > 1700 ? 2 : window.innerWidth > 1200 ? 2 : 2;
 let maxPageCount = () => slideCount / slidesPerPage() - .8;
 
 function goToPage(pageNumber = 0) {

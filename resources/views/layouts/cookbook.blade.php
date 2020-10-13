@@ -13,8 +13,6 @@
 
     <meta name="description" content="As the original description indicates, slick is a responsive carousel jQuery plugin that supports multiple breakpoints, CSS3 transitions, touch events/swiping, etc. We'd like to show how to make quickly custom styles for a slick slider." />
     <meta name="keywords" content="slick, animation, inspiration, javascript, html5, css3, carousel, slider" />
-    <meta name="author" content="Mirza Hodzic - COIDEA" />
-    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/base.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>

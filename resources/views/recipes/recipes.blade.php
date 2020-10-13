@@ -46,8 +46,11 @@
                   <header class="velo-slide__header">
                     <h3 class="velo-slide__title">
                       <span class="oh">
-                        <span>{!!$post->title!!}</span>
-                      </span>                      
+                        <span class="name">
+                         &nbsp;
+                        </span><br />
+                        <span class="postTitle">{!!$post->title!!}</span>
+                      </span>
                     </h3>
                     <p class="velo-slide__text">
                       <span class="oh">
@@ -56,13 +59,13 @@
                           <small style="letter-spacing: 0 !important">Published {{$post->updated_at->diffForHumans()}}</small><br />
                           @if($post->cookbook_id)
                             <span class="playlist"><a href="/cookbook/{{$post->cookbook_id}}" style="color: #fff">COOKBOOK</a> </span><br />
-                          @endif                      
+                          @endif
                           <!-- <span class="others-two"><i class="las la-utensils"></i><i class="las la-utensils"></i><i class="las la-utensils"></i><i class="las la-utensils"></i>  28 people have tried this recipe </span> -->
                           @if(!Auth::guest())
-                            @if(Auth::user()->id == $post->user_id)
+                            @if(Auth::user()->id == $cookbook->user_id)
                             <span class="d-flex">
                               <span ><a href="/r/{{$post->id}}/edit" style="padding-right: .5em; border-right: 1px solid #fff;font-size: .8em; color: #fff !important; text-decoration: none">Edit</a></span>
-                              <span ><a href="#" style="padding-left: .3em; font-size: .8em; color: #fff !important; text-decoration: none" data-toggle="modal" data-target=".bd-example-modal-sm">Delete</a></span>
+                              <span ><a href="#" style="padding-left: .3em; font-size: .8em; color: #fff !important; text-decoration: none">Delete</a></span>
                             </span>
                             @endif
                           @endif
@@ -71,12 +74,17 @@
                     </p>
                     <span class="velo-slide__btn">
                       <a class="btn-draw btn--white" href="/r/{{$post->id}}">
-                        <span class="btn-draw__text"><span>View This Recipe</span></span>
-                      </a>
+                        <span class="btn-draw__text"><span>Make This Dish</span></span>
+                      </a> 
+
+                     <!--  <a class="btn-draw btn--white" href="#">
+                        <span class="btn-draw__text" data-toggle="modal" data-target=".bd-{{$post->id}}"><span>Make This Dish</span></span>
+                      </a> -->
                     </span>
+                    
                   </header>
                 </section>
-
+              
               @endforeach
 
               <!-- Slides Nav -->

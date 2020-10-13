@@ -30,25 +30,28 @@
                 <header class="velo-slide__header">
                   <h3 class="velo-slide__title">
                     <span class="oh">
-                      <span  style="cursor:pointer; margin-bottom:.3em; font-size: .5em !important;"><a href="/p/{{$post->user->id}}" style="color: #fff">
-                        @if(!Auth::guest())
-                          @if(Auth::user()->id == $post->user->id)
-                           My Post
-                          @else
-                           {{$post->user->name}}
-                          @endif
-                        @endif
-                       
-                      </a>
+                      <span class="name">
+                        <a href="/p/{{$post->user->id}}" style="color: #fff">
+                          {{$post->user->name}}
+                          <!-- @if(!Auth::guest())
+                            @if(Auth::user()->id == $post->user->id)
+                             {{$post->user->name}}
+                            @else
+                             {{$post->user->name}}
+                            @endif
+                          @endif -->
+                        </a>
+                       &nbsp;
+                       <small style="letter-spacing: 0 !important; cursor: default !important;">  {{$post->updated_at->diffForHumans()}}</small><br />
                       </span><br />
-                      <span>{!!$post->title!!}</span>
+                      <span class="postTitle">{!!$post->title!!}</span>
                     </span>
                   </h3>
                   <p class="velo-slide__text">
                     <span class="oh">
                       <span>
                         {{$post->body}}<br />
-                        <small style="letter-spacing: 0 !important">Published {{$post->updated_at->diffForHumans()}}</small><br />
+                        
                         @if($post->cookbook_id)
                           <span class="playlist"><a href="/cookbook/{{$post->cookbook_id}}" style="color: #fff">COOKBOOK</a> </span><br />
                         @endif
@@ -59,12 +62,18 @@
                   <span class="velo-slide__btn">
                     <a class="btn-draw btn--white" href="/r/{{$post->id}}">
                       <span class="btn-draw__text"><span>Make This Dish</span></span>
-                    </a>
+                    </a> 
+
+                   <!--  <a class="btn-draw btn--white" href="#">
+                      <span class="btn-draw__text" data-toggle="modal" data-target=".bd-{{$post->id}}"><span>Make This Dish</span></span>
+                    </a> -->
                   </span>
                   
                 </header>
               </section>
 
+              
+              
             @endforeach
 
             <!-- Slides Nav -->

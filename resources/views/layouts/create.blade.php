@@ -124,6 +124,12 @@
 		        transform: translateY(0%);
 					transition: 0.4 ease;
 			}
+			.row{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-between;
+			}
 		</style>
 
 	</head>

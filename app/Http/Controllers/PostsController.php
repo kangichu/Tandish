@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Cookbook;
+use App\Bookmark;
+use App\Made;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Routing\UrlGenerator;
 //use DB;
@@ -24,7 +26,7 @@ class PostsController extends Controller
      */
     public function index()
     {        
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('updated_at', 'desc')->get();
         return view('home.index')->with('posts', $posts);
     }
 
@@ -52,12 +54,16 @@ class PostsController extends Controller
                 'title' => 'required|max:50',
                 'body' => 'required|max:140',
                 'ingredients' => 'required',
-                'time' => ['required', 'string'],
-                'cook' => ['required', 'string'],
+                'htime' => ['required', 'numeric'],
+                'mtime' => ['required', 'numeric'],
+                'stime' => ['required', 'numeric'],
+                'hcook' => ['required', 'numeric'],
+                'mcook' => ['required', 'numeric'],
+                'scook' => ['required', 'numeric'],
                 'serves' => ['required', 'numeric'],
                 'method' => 'required',
                 'cookbook_id' =>  'nullable|numeric',
-                'cover_image' => 'image|nullable|max:19999'
+                'cover_image' => 'image|nullable|max:10240'
             ], 
             [
                 'title.required' => 'This is a required field.',
@@ -65,8 +71,12 @@ class PostsController extends Controller
                 'body.required' => 'This is a required field.',
                 'body.max' => 'The character limit is set at 140.',
                 'ingredients.required' => 'This is a required field.',
-                'time.required' => 'This is a required field.',
-                'cook.required' => 'This is a required field.',
+                'htime.required' => 'This is a required field.',
+                'mtime.required' => 'This is a required field.',
+                'stime.required' => 'This is a required field.',
+                'hcook.required' => 'This is a required field.',
+                'mcook.required' => 'This is a required field.',
+                'scook.required' => 'This is a required field.',
                 'serves.required' => 'This is a required field.',
                 'method.required' => 'This is a required field.'
             ]
@@ -93,8 +103,12 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->ingredients = $request->input('ingredients');
-        $post->time = $request->input('time');
-        $post->cook = $request->input('cook');
+        $post->htime = $request->input('htime');
+        $post->mtime = $request->input('mtime');
+        $post->stime = $request->input('stime');
+        $post->hcook = $request->input('hcook');
+        $post->mcook = $request->input('mcook');
+        $post->scook = $request->input('scook');
         $post->serves = $request->input('serves');
         $post->method = $request->input('method');
         $post->cookbook_id = $request->input('cookbook_id');
@@ -114,9 +128,12 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $bookmark = Bookmark::where('post_id', $id)->get();
+        $made = Made::where('post_id', $id)->get();
+        $count = Made::get()->count();
         $user_id = auth()->user()->id;
         $url = url()->current();
-        return view('recipe.recipe')->with(array('post'=>$post, 'url'=>$url));
+        return view('recipe.recipe')->with(array('post'=>$post, 'url'=>$url, 'bookmark'=>$bookmark, 'made'=>$made, 'count'=>$count));
     }
 
     /**
@@ -153,12 +170,16 @@ class PostsController extends Controller
                 'title' => 'required|max:50',
                 'body' => 'required|max:140',
                 'ingredients' => 'required',
-                'time' => ['required', 'string'],
-                'cook' => ['required', 'string'],
+                'htime' => ['required', 'numeric'],
+                'mtime' => ['required', 'numeric'],
+                'stime' => ['required', 'numeric'],
+                'hcook' => ['required', 'numeric'],
+                'mcook' => ['required', 'numeric'],
+                'scook' => ['required', 'numeric'],
                 'serves' => ['required', 'numeric'],
                 'method' => 'required',
                 'cookbook_id' =>  'nullable|numeric',
-                'cover_image' => 'image|nullable|max:19999'
+                'cover_image' => 'image|nullable|max:10240'
             ], 
             [
                 'title.required' => 'This is a required field.',
@@ -166,8 +187,11 @@ class PostsController extends Controller
                 'body.required' => 'This is a required field.',
                 'body.max' => 'The character limit is set at 140.',
                 'ingredients.required' => 'This is a required field.',
-                'time.required' => 'This is a required field.',
-                'cook.required' => 'This is a required field.',
+                'htime.required' => 'This is a required field.',
+                'mtime.required' => 'This is a required field.',
+                'stime.required' => 'This is a required field.',
+                'hcook.required' => 'This is a required field.',
+                'mcook.required' => 'This is a required field.',
                 'serves.required' => 'This is a required field.',
                 'method.required' => 'This is a required field.'
             ]
@@ -193,8 +217,12 @@ class PostsController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->ingredients = $request->input('ingredients');
-        $post->time = $request->input('time');
-        $post->cook = $request->input('cook');
+        $post->htime = $request->input('htime');
+        $post->mtime = $request->input('mtime');
+        $post->stime = $request->input('stime');
+        $post->hcook = $request->input('hcook');
+        $post->mcook = $request->input('mcook');
+        $post->scook = $request->input('scook');
         $post->serves = $request->input('serves');
         $post->method = $request->input('method');
         $post->cookbook_id = $request->input('cookbook_id');

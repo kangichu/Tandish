@@ -11,15 +11,48 @@
       @include('inc.modal')
 
       <div class="social">
-        <p><a href="/p/{{$post->user->id}}" style="color:#fff; text-decoration: none;">{{$post->user->name}}</a></p>                  
+        <p><a href="/p/{{$post->user->id}}" style="color:#fff; text-decoration: none;">
+          @if(!Auth::guest()) 
+            @if(Auth::user()->id != $post->user_id) 
+              {{$post->user->name}} 
+            @else 
+              My Profile 
+            @endif 
+          @endif 
+        </a></p>    
+
+        @if($post->cookbook_id)
+          <span class="playlist"><a href="/cookbook/{{$post->cookbook_id}}">COOKBOOK</a></span>
+        @endif               
         <p title="Share" id="c-button--slide-bottom" class="c-button"><i class="las la-external-link-square-alt"></i></p>
+        <p title="Comment" class="cd-btns" ><i class="las la-comment"></i></p>
         @if(!Auth::guest())
           @if(Auth::user()->id != $post->user_id)
-            <p title="Made this?"><i class="las la-utensils trying"></i></p>
-            <p title="Like"><i class="las la-thumbs-up"></i></p>
+            @if($made->isEmpty())
+              <p>
+                {!! Form::open(['action' => 'MadesController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
+                  {{Form::hidden('post_id', $post->id)}}
+                  {{ Form::button('<i class="las la-utensils"  title="Made this?"></i>', ['type' => 'submit', 'class' => 'btn btn-warning btn-sm'] )  }}
+                {!! Form::close() !!}
+              </p>
+            @else
+              <p title="I've Made This" style="color: red"><i class="las la-utensils"></i></p>
+            @endif    
+
+
+            @if($bookmark->isEmpty())
+              <p>
+                {!! Form::open(['action' => 'BookmarksController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
+                  {{Form::hidden('post_id', $post->id)}}
+                  {{ Form::button('<i title="Bookmark" class="las la-bookmark"></i>', ['type' => 'submit', 'class' => 'btn btn-warning btn-sm'] )  }}
+                {!! Form::close() !!}
+              </p>
+            @else
+              <p title="Bookmarked" style="color: red"><i class="las la-bookmark"></i></p>
+            @endif    
           @endif
         @endif
-        <p title="Comment" class="cd-btns"><i class="las la-comment"></i></p>
+       
         @if(!Auth::guest())
           @if(Auth::user()->id == $post->user_id)
 
@@ -27,19 +60,7 @@
             <p title="Delete" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="las la-trash"></i></p>            
           @endif
         @endif
-        
       </div>   
-
-      <div class="details">
-        <p><i class="las la-utensils"></i> 4.5</p>
-        <p>Serves: {{$post->serves}}</p>
-        <p>Prep: {{$post->time}}</p>
-        <p>Cook: {{$post->cook}}</p>
-      </div>  
-
-      @if($post->cookbook_id)
-        <span class="playlist"><a href="/cookbook/{{$post->cookbook_id}}">COOKBOOK</a></span>
-      @endif 
 
       <section class="slider-pages">
         <article class="js-scrolling__page js-scrolling__page-1 js-scrolling--active">
@@ -63,7 +84,14 @@
                 <!-- /.slider-page__title slider-page__title--big -->
                 <h2 class="slider-page__title">
                   {!!$post->body!!}<br /> <br /> 
-                  Published {{$post->updated_at->diffForHumans() }}             
+                  <small>Published {{$post->updated_at->diffForHumans() }}  </small>
+
+                  <div class="details">
+                    <span title="made this" style="cursor: pointer;"><i class="las la-utensils"></i>&nbsp;{{$count}}</span>
+                    <span>Serves: {{$post->serves}}</span>
+                    <span>Prep: @if($post->htime != 0){{$post->htime}}hr @endif @if($post->mtime != 0){{$post->mtime}}min @endif</span>
+                    <span>Cook:  @if($post->hcook != 0){{$post->hcook}}hr @endif @if($post->mcook != 0){{$post->mcook}}min @endif</span>
+                  </div>             
                 </h2>
                 <!-- /.slider-page__title -->
                 <p class="slider-page__description">
@@ -82,9 +110,10 @@
           <div class="slider-page slider-page--left">
             <div class="slider-page--skew">
               <div class="slider-page__content">
-                <h1 class="slider-page__title" style="font-size: 4em;text-decoration: line-through;">
+                <!-- <h1 class="slider-page__title" style="font-size: 4em;text-decoration: line-through;">
                   Ingredients
-                </h1>
+                </h1> -->
+                <span class="velo-slider__hint"><span><span>Ingredients</span></span></span>
                 <!-- /.slider-page__title -->
                 <p class="slider-page__description">
                   {!!$post->ingredients!!}
@@ -122,9 +151,10 @@
           <div class="slider-page slider-page--right">
             <div class="slider-page--skew">
               <div class="slider-page__content">
-                <h1 class="slider-page__title" style="font-size: 4em;text-decoration: line-through;">
+                <!-- <h1 class="slider-page__title" style="font-size: 4em;text-decoration: line-through;">
                   Directions
-                </h1>
+                </h1> -->
+                <span class="velo-slider__hints"><span><span>Directions</span></span></span>
                 <!-- /.slider-page__title -->
                 <p class="slider-page__description">
                   {!! $post->method !!}
@@ -169,12 +199,13 @@
 
     <div class="cd-panels from-right">
       <header class="cd-panel-header">
+        <h1>{{$post-> title}} comments</h1>
         <a href="#0" class="cd-panel-closes">Close</a>
       </header>
 
       <div class="cd-panel-container">
         <div class="cd-panel-content">
-          
+          @comments(['model' => $post])
         </div> <!-- cd-panel-content -->
       </div> <!-- cd-panel-container -->
     </div> <!-- cd-panel -->

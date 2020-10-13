@@ -40,6 +40,12 @@ Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function (){
 	Route::resource('/cookbook', 'CookbooksController');
 	Route::get('/user/cookbooks/{id}', 'CookbooksController@posts');
 
+	//Bookmark
+	Route::resource('/bookmark', 'BookmarksController');
+
+	//Made This
+	Route::resource('/made', 'MadesController');
+
 	//Search
 	Route::get('/search',['uses' => 'SearchController@getSearch','as' => 'search']);
 
@@ -47,9 +53,9 @@ Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function (){
 	Route::get('/settings', 'SettingsController@index')->name('settings');
 
 	//Feedback
-	Route::get('/about-us', 'FeedbacksController@index')->name('feedbacks');
+	Route::get('/help', 'FeedbacksController@index')->name('feedbacks');
+ 
+	Route::post('follow', 'ProfilesController@follwUserRequest')->name('follow');
 
 });
-
-
 

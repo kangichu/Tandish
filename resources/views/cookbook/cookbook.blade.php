@@ -38,7 +38,7 @@
             <a href="/p/{{$cookbook->user->id}}" style="text-decoration: none; color: #fff">
               @if(!Auth::guest())
                 @if(Auth::user()->id == $cookbook->user->id)
-                 My Post
+                 My Profile
                 @else
                  {{$cookbook->user->name}}
                 @endif
@@ -46,7 +46,7 @@
             </a>
           </p>
           <p id="c-button--slide-bottom" class="c-button" ><i class="las la-external-link-square-alt"></i></p>
-          <p><i class="las la-bookmark"></i></p>
+          <p><i class="las la-thumbs-up"></i></p>
           <p title="Message" class="cd-btns"><i class="las la-comment"></i></p>
            @if(!Auth::guest())
           @if(Auth::user()->id == $cookbook->user_id)
@@ -78,7 +78,7 @@
                   <div class="body">
                     <div class="location">Mong Kok, Hong Kong</div>
                     <div class="headline">{{ $post->title }}</div>
-                    <a href="/r/{{$post->id}}" target="_blank">
+                    <a href="/r/{{$post->id}}">
                       <div class="link">Make This Dish</div>
                     </a>
                   </div>

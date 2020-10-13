@@ -25,6 +25,11 @@ a {
   height: 1.5em;
 }
 
+button.btn.btn-sub i {
+    font-size: 1.5em;
+    padding-right: 1em;
+}
+
 .modal{
   font-family: 'Open Sans Condensed', sans-serif !important;
 }
@@ -442,19 +447,30 @@ small{
 }
 
 .velo-slider__hints > span {
-  font-family: "Montserrat", Helvetica, sans-serif;
+   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
 }
-.velo-slider__hints {
+/*.velo-slider__hints {
   z-index:9;
   position: fixed;
   top: 0em;
   display: none;
   height: 100vh;
-  width: 10vw;
+  width: 3vw;
+  font-size: 1em;
+  color: #fff;
+}*/
+.velo-slider__hints {
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 1em;
+  display: none;
+  height: 100vh;
+  width: 4em;
   font-size: 1em;
   color: #fff;
 }
@@ -501,7 +517,7 @@ small{
   background: linear-gradient(90deg, #3e4751 0%, #25303c 100%);
 }
 #hero-slides #header {
-  height: 12vh;
+  height: 11vh;
   line-height: 12vh;
   padding: 0 3vw;
   position: relative;
@@ -556,7 +572,7 @@ small{
   --button-height: 6vh;
   --button-spacing: 0.2vh;
   width: 80vw;
-  /*left: 20vw;*/
+  left: 10vw;
   z-index: 999;
 }
 #hero-slides #slides-cont .button {
@@ -636,9 +652,9 @@ small{
 }
 #hero-slides #slides {
   --slides-height: 76vh;
-  width: auto;
+  width: 100vw;
   height: var(--slides-height);
-  padding: 0 10vw;
+  padding: 0 4em;
   font-size: 0;
   white-space: nowrap;
   position: absolute;
@@ -652,7 +668,7 @@ small{
   display: inline-block;
   vertical-align: top;
   font-size: 1.5vw;
-  width: 24em;
+  width: 40vw;
   height: var(--slides-height);
   margin: 0 1.333em;
   background: #101419;

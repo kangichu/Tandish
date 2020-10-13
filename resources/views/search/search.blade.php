@@ -29,9 +29,10 @@
 				    <p class="paragraph">
 				     	{{$post->body}}<br>
 		              	<small style="letter-spacing: 0 !important">Published {{$post->updated_at->diffForHumans()}}</small><br /><br />
-		              	 <span class="playlist"><a href="/cookbook" style="color: #fff">COOKBOOK</a> 
-		              	 </span><br />
-		              	<span class="others-two"><i class="las la-utensils"></i><i class="las la-utensils"></i><i class="las la-utensils"></i><i class="las la-utensils"></i>  28 people have tried this recipe </span><br><br>
+		              	@if($post->cookbook_id)
+                          <span class="playlist"><a href="/cookbook/{{$post->cookbook_id}}" style="color: #fff">COOKBOOK</a> </span><br />
+                        @endif
+		              	
 				      	<a href="/r/{{$post->id}}" class="link_btn">Make This Dish</a>
 				    </p>
 				  </div>

@@ -40,7 +40,7 @@
 						</div>
 						@if(count($errors) > 0)
 							<br>
-							<span class="alert alert-warning alert-block ">Please Fill in all required fields before submitting</span>
+							<span class="alert alert-warning alert-block ">Please confirm recipe input fields before submitting</span>
 						@endif
 						<!-- /Top Navigation -->
 
@@ -62,7 +62,7 @@
 				                    @endif 
 								</div>			
 								<div class="mb-5">
-									<img id="output" class='coverDisplay' src="/storage/cover_images/{{$post->cover_image}}" style="height:60vh; width: 100vw" />
+									<img id="output" class='coverDisplay' src="/storage/cover_images/{{$post->cover_image}}" style="height:auto; width: auto" />
 									{{Form::label('body', 'Recipe Cover Image ', ['class'=>'font-bold mb-1 text-gray-700 block'])}}
 									<small>High Quality Cover Image: 24MP Quality</small><br /><br />
 				                    <input type="file" name="cover_image" accept="image/*" 
@@ -88,28 +88,73 @@
 							</div>
 
 							<div x-show.transition.in="step === 3">
-								<div class="mb-5">
-									{{Form::text('time', $post->time, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Preparation time: hh mm'])}}<br><br>
-				                     @if ($errors->has('time'))
-				                        <span class="alert alert-warning alert-block ">{{ $errors->first('time') }}</span><br>	<br>
-				                    @endif 
+								<label for="description" class="font-bold mb-1 text-gray-700 block">Preparation Time</label>
+								<div class="row">
+									<div class="col-4">
+										<div class="mb-5">
+											{{Form::number('htime', $post->htime, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 hr'])}}<br><br>
+						                     @if ($errors->has('time'))
+						                        <span class="alert alert-warning alert-block">{{ $errors->first('time') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="mb-5">
+											{{Form::number('mtime', $post->mtime, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 min'])}}<br><br>
+						                     @if ($errors->has('time'))
+						                        <span class="alert alert-warning alert-block">{{ $errors->first('time') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="mb-5">
+											{{Form::number('stime', $post->stime, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 sec'])}}<br><br>
+						                     @if ($errors->has('time'))
+						                        <span class="alert alert-warning alert-block">{{ $errors->first('time') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>
 								</div>
 
-								<div class="mb-5">
-									 {{Form::text('cook', $post->cook, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Cook time: hh mm'])}}<br><br>
-				                     @if ($errors->has('cook'))
-				                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
-				                    @endif 
+								<label for="description" class="font-bold mb-1 text-gray-700 block">Cooking Time</label>
+								<div class="row">
+									<div class="col-4">
+										<div class="mb-5">
+											 {{Form::number('hcook', $post->hcook, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 hr'])}}<br><br>
+						                     @if ($errors->has('cook'))
+						                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>	
+									<div class="col-4">
+										<div class="mb-5">
+											 {{Form::number('mcook', $post->mcook, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 min'])}}<br><br>
+						                     @if ($errors->has('cook'))
+						                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>	
+									<div class="col-4">
+										<div class="mb-5">
+											 {{Form::number('scook', $post->scook, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 sec'])}}<br><br>
+						                     @if ($errors->has('cook'))
+						                        <span class="alert alert-warning alert-block ">{{ $errors->first('cook') }}</span><br><br>
+						                    @endif 
+										</div>
+									</div>	
 								</div>
 
+								<label for="description" class="font-bold mb-1 text-gray-700 block">Serves how many people?</label>
 								<div class="mb-5">
-									{{Form::number('serves', $post->serves, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => 'Number of people served'])}}<br><br>
+									{{Form::number('serves', $post->serves, ['class' => 'w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium', 'placeholder' => '00 people'])}}<br><br>
 				                     @if ($errors->has('serves'))
 				                        <span class="alert alert-warning alert-block ">{{ $errors->first('serves') }}</span><br><br>
 				                    @endif 
 								</div>
+
 								<div class="mb-5">
-									<label for="description" class="font-bold mb-1 text-gray-700 block">Optional</label>
+									<label for="description" class="font-bold mb-1 text-gray-700 block">Optional (<small>Create cookbooks from your profile</small>)</label>
+									
 						            <select name="cookbook_id" id="cookbook_id" class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
 						                <option value="">--- Select Cookbook ---</option>
 						                @foreach ($cookbooks as $cookbook)

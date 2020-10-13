@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Overtrue\LaravelFollow\Followable;
+use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable, Followable, Commenter;
 
     /**
      * The attributes that are mass assignable.
@@ -46,8 +48,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Cookbook');
     }
 
-    public function profile()
-    {
+    public function bookmarks(){
+        //return $this->hasMany('App\Bookmark');
+        return $this->belongsToMany(Post::class, 'bookmarks', 'user_id', 'post_id')->withTimeStamps();
+    }
+
+    public function mades(){
+        return $this->hasMany('App\Made');
+    }
+
+    public function profile(){
         return $this->hasOne('App\Profile');
     }
 

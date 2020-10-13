@@ -27,7 +27,7 @@
       <link rel="stylesheet" href="{{ asset('css/recipe/style.css') }}">
       <link rel="stylesheet" href="{{ asset('css/common/profile/style.css') }}" />
       <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" />
-      <link rel="stylesheet" href="{{ asset('css/common/inputs/style.css') }}" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="{{ asset('css/common/inputs/style.css') }}" rel="stylesheet"> -->
       <style type="text/css">
         input.form-control.clean-slide {
             border-bottom: none;
@@ -119,6 +119,7 @@
       <script src="{{ asset('js/common/search/index.js') }}"></script>
       <script src="{{ asset('js/common/notify/main.js') }}"></script>
       <script src="{{ asset('js/common/popular/index.js') }}"></script>
+      <script src="{{ asset('js/recipe/device.js') }}"></script>
       <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
       <script>
       

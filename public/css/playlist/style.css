@@ -29,7 +29,7 @@ svg.icon{
   position: absolute;
   z-index: 999;
   top: 1.5em;
-  left: 4.5em;
+  left: 2.5vw;
   height: 1.5em;
 }
 .btn {
@@ -177,7 +177,7 @@ svg.icon{
   position: absolute;
   z-index: 999;
   top: 4vh;
-  right: 41vw;
+  right: 45vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -566,3 +566,11 @@ font-family: 'Text Me One', sans-serif;
   border: none;
 }
 
+.profile_back {
+    position: absolute;
+    top: 4em;
+    z-index: 999;
+    left: 1.5em;
+    font-size: 1.5em;
+    color: #fff;
+}
